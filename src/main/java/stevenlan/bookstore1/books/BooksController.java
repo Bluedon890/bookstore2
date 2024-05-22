@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(path = "api/v1/books")
+@RequestMapping(path = "/books")
 public class BooksController {
 
     private final BooksService booksService;
@@ -32,18 +32,18 @@ public class BooksController {
         return booksService.getAllBooks();
     }
 
-    @PostMapping
+    @PostMapping("/admin")
     public void addNewBooks(@RequestBody Books books){
         booksService.addNewBooks(books);
     }
 
-    @DeleteMapping(path = "{booksId}")
+    @DeleteMapping(path = "/admin/{booksId}")
     public void deleteBooks(
         @PathVariable("booksId") Long booksId){
             booksService.deleteBooks(booksId);
     }
 
-    @PutMapping(path = "{booksId}")
+    @PutMapping(path = "/admin/{booksId}")
     public void updateBooks(
         @PathVariable("booksId") Long booksId,
         @RequestParam(required = false) String title,

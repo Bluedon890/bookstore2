@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path="api/v1/employees")
+@RequestMapping(path="/employees")
 public class EmployeesController {
 
     private final EmployeesService employeesService;
@@ -30,19 +30,19 @@ public class EmployeesController {
 		
 	}
 
-    @PostMapping
+    @PostMapping("/admin")
     public void registerNewEmployees(
         @RequestBody Employees employees){
         employeesService.addNewEmployees(employees);
     }
 
-    @DeleteMapping(path = "{employeesId}")
+    @DeleteMapping(path = "/admin/{employeesId}")
     public void deleteEmployees(
         @PathVariable("employeesId") Long employeesId){
         employeesService.deleteEmployees(employeesId);
     }
 
-    @PutMapping(path = "{employeesId}")
+    @PutMapping(path = "/admin/{employeesId}")
     public void updateEmployees(
         @PathVariable("employeesId") Long employeesId,
         @RequestParam(required = false) String name,
