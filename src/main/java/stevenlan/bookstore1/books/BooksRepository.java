@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BooksRepository extends JpaRepository<Books, Long>{
 
-     @Query("SELECT s FROM Books s WHERE s.title = ?1")
+    @Query("SELECT s FROM Books s WHERE s.title = ?1")
     Optional<Books> findBooksByTitle(String title);
 }
